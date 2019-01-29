@@ -1,0 +1,5 @@
+mat-progress-bar{
+  height:1px;
+  position: relative;
+  z-index: 0;
+}

@@ -1,0 +1,143 @@
+
+<div class="form">
+  <form #siteEkleForm="ngForm" (ngSubmit)="onSubmit(siteEkleForm)">
+      <div class="form-group">
+          <label for="adi">Site Adı</label>
+
+          <input type="text"
+          id="adi" placeholder="Site Adını giriniz"
+          name="adi"
+          [(ngModel)]="site.adi"
+          class="form-control"
+          required
+          #adi="ngModel">
+        <div [hidden]="adi.valid ||adi.pristine" class="alert alert-danger">Site Adı gereklidir</div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="adres">Adres</label>
+          <textarea name="adres"
+          id="adres"
+          cols="30"
+           rows="10"
+            class="form-control"
+            [(ngModel)]="site.adres.adres"
+            #adres="ngModel"
+             required
+          ></textarea>
+          <div [hidden]="adres.valid || adres.pristine" class="alert alert-danger">Adres gereklidir</div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+              <div class="form-group">
+                  <label for="il">İl</label>
+                  <input type="text" id="il"
+                  name="il"
+                  placeholder="İl"
+                  required
+                  class="form-control"
+                  [(ngModel)]="site.adres.sehir"
+                  #il="ngModel">
+              <div class="alert alert-danger" [hidden]="il.valid ||il.pristine">Şehir Gereklidir</div>
+                </div>
+          </div>
+          <div class="col-6">
+              <div class="form-group">
+                  <label for="ilce">İlçe</label>
+
+                  <input type="text" id="ilce"
+                  class="form-control"
+                   name="ilce"
+                   required
+                   [(ngModel)]="site.adres.ilce"
+                   placeholder="İlçe giriniz"
+                   #il="ngModel"
+                  >
+                </div>
+          </div>
+        </div>
+              <div class="form-group">
+                  <label for="siteTelNo">Site Tel No</label>
+
+                  <input type="tel"
+                  id="siteTelNo"
+                   name="siteTelNo"
+                   [(ngModel)]="site.tel"
+                   placeholder="Telefon No giriniz"  class="form-control">
+
+                </div>
+
+            <div class="row">
+              <div class="form-group col-6">
+                  <label for="yAdi">Yönetici</label>
+                  <input type="text"
+                  id="yAdi"
+                  name="yAdi"
+                  placeholder="Yönetici Adı Soyadı"
+                  class="form-control"
+                  [(ngModel)]="site.yonetici.adi"
+                  >
+
+              </div>
+              <div class="form-group col-6">
+                  <label for="yTelNo">Yönetici Tel No</label>
+                  <input type="tel" id="yTelNo"
+                  placeholder="Tel No"
+                  name="yTelNo"
+                  class="form-control"
+                  [(ngModel)]="site.yonetici.tel">
+              </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="yKullaniciAdi">Yönetici Kullanıcı Adı</label>
+                    <input type="text"
+                    id="yKullaniciAdi"
+                    name="yKullaniciAdi"
+                    placeholder="Adı Soyadı"
+                    [(ngModel)]="site.yonetici.kullanici.adi"
+                    class="form-control">
+
+                </div>
+                <div class="form-group col-6">
+                    <label for="ySifre">Yönetici Şifre</label>
+                    <input type="password" id="ySifre"
+                     name="ySifre" placeholder="Şifre"
+                     [(ngModel)]="site.yonetici.kullanici.sifre"
+
+                     class="form-control">
+                </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-6">
+                      <label for="yManipulasyonKatsayisi">Manipulasyon Katsayısı</label>
+                      <input type="number"
+                      id="yManipulasyonKatsayisi"
+                       name="yManipulasyonKatsayisi"
+                        placeholder="Manipulasyon Kat Sayısı"
+                        required
+                        class="form-control"
+                        [(ngModel)]="site.manipulasyonKatsayisi"
+                        OnlyNumber="true"
+                        #mKatsayisi="ngModel"
+                        required>
+                  <div [hidden]="mKatsayisi.valid || mKatsayisi.pristine"class="alert alert-danger">
+                    Manipulasyon katsayısı zorunludur lütfen sayı giriniz</div>
+                  </div>
+                  <div class="form-group col-6">
+                      <label for="durum">Durum</label>
+                      <select class="form-control" name="durum" id="durum">
+                          <option>Aktif</option>
+                          <option>Pasif</option>
+                        </select>
+                  </div>
+                </div>
+                <button  type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal" [disabled]="!siteEkleForm.valid">Kaydet</button>
+
+      </form>
+
+
+
+      <a class="btn btn-danger pull-right" [routerLink]="['/yonetici','site','liste']">İptal</a>
+    </div>

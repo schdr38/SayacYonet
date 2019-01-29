@@ -1,0 +1,124 @@
+
+<div class="table-header">
+    <select name="siteAdi"
+    id="siteAdi"
+    matInput
+    #inputSite
+    class="form-control"
+    (change)="onSiteChange($event.target.value)"
+   >
+    <option value="">Seçiniz</option>
+    <option *ngFor="let s of siteler" [value]="s.item1">{{s.item2}}</option>
+   </select>
+
+
+
+  <mat-form-field>
+    <input matInput  placeholder="Filtre" #inputFilter>
+  </mat-form-field>
+</div>
+<button mat-button color="warn" [routerLink]="['/yonetici','kazan','ekle']" >Kazan Ekle</button>
+
+<div class="table-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="adi">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Adı </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+       {{row.adi}}
+      </mat-cell>
+        </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="isiIstasyonuVarMi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Isı İstasyonu		</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+      <div class="sayacVar" *ngIf ="row.isiIstasyonuVarMi === true; else durumYok">
+        Var
+      </div>
+
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="boylerKalorimetre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Boyler Kalorimetresi</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+      <div class="sayacVar"  *ngIf ="row.ortakSicakSuKaloriMetreVarMi === true; else durumYok">
+        Var
+      </div>
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="daireKalorimetre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Kalorimetre		</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+      <div  class="sayacVar"  *ngIf ="row.daireKalorimetre === true; else durumYok">
+        Var
+      </div>
+
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="daireSicakSuSayaci">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Sıcak Su Sayacı</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+      <div class="sayacVar"  *ngIf ="row.daireSicakSuSayac === true; else durumYok">
+        Var
+      </div>
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="daireSoğukSuSayaci">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Soğuk Su Sayacı</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+      <div class="sayacVar"  *ngIf ="row.daireSogukSuSayac === true; else durumYok">
+        Var
+      </div>
+
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dairePayOlcer">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Pay Ölçer</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+      <div class="sayacVar"  *ngIf ="row.dairePayOlcer === true; else durumYok">
+        Var
+      </div>
+
+      </mat-cell>
+    </ng-container>
+
+
+
+
+
+    <ng-container matColumnDef="site.adi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Site Adı </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{selectedSite}}
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> İşlemler </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <a [routerLink]="['/yonetici','kazan','duzenle',row.id]" mat-raised-button color="primary"> Düzenle</a>
+      </mat-cell>
+    </ng-container>
+
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator
+  [length]="this.toplamElemanSayisi"
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+<ng-template #durumYok>
+  <div id="sayacYok">Yok</div>
+
+</ng-template>

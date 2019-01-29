@@ -1,0 +1,163 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="nav-side-menu">
+    <div class="brand"><p>DENEME</p></div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                  <a href="#">
+                  <i class="fa fa-dashboard fa-lg"></i> Yönetim Paneli
+                  </a>
+                </li>
+                          <!-- SİTE MENÜSÜ -->
+
+                <li  data-toggle="collapse" data-target="#products" class="collapsed">
+                  <a ><i class="fa fa-building"></i> Siteler <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="products">
+                    <li routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}">
+                        <a [routerLink]="['yonetici','site','ekle']">
+                      <i class="fa fa-plus" aria-hidden="true"></i>   Site Ekle</a>
+                    </li>
+                    <li routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}">
+                        <a [routerLink]="['yonetici','site','liste']">
+                      <i class="fa fa-list" aria-hidden="true"></i>   Site Listesi</a>
+                    </li>
+
+                  </ul>
+
+                          <!-- SİTE MENÜSÜ -->
+                  <!--KAZAN MENÜSÜ -->
+                  <li>
+                    <a href="#" [routerLink]="['yonetici','kazan','liste']" >
+                    <i class="fa fa-fire fa-lg"></i> Kazanlar
+                    </a>
+                  </li>
+                  <!--KAZAN MENÜSÜ -->
+
+                  <!--BLOK MENÜSÜ -->
+                  <li  data-toggle="collapse" data-target="#bloklar" class="collapsed ">
+                    <a ><i class="fa fa-home"></i> Bloklar <span class="arrow"></span></a>
+                  </li>
+                  <ul class="sub-menu collapse" id="bloklar">
+                      <li routerLinkActive="active"
+                          [routerLinkActiveOptions]="{exact:true}">
+                          <a [routerLink]="['yonetici','blok','ekle']">
+                        <i class="fa fa-plus" aria-hidden="true"></i>   Blok Ekle</a>
+                      </li>
+                      <li routerLinkActive="active"
+                          [routerLinkActiveOptions]="{exact:true}">
+                          <a [routerLink]="['yonetici','blok','liste']">
+                        <i class="fa fa-list" aria-hidden="true"></i>   Blok Listesi</a>
+                      </li>
+
+                    </ul>
+                  <!--BLOK MENÜSÜ -->
+                                   <!--BLOK MENÜSÜ -->
+                  <li  data-toggle="collapse" data-target="#daireler" class="collapsed ">
+                    <a ><i class="fa fa-bed" aria-hidden="true"></i> Daireler <span class="arrow"></span></a>
+                  </li>
+                  <ul class="sub-menu collapse" id="daireler">
+                      <li routerLinkActive="active"
+                          [routerLinkActiveOptions]="{exact:true}">
+                          <a [routerLink]="['yonetici','daire','ekle']">
+                        <i class="fa fa-plus" aria-hidden="true"></i>   Daire Ekle</a>
+                      </li>
+                      <li routerLinkActive="active"
+                          [routerLinkActiveOptions]="{exact:true}">
+                          <a [routerLink]="['yonetici','daire','liste']">
+                        <i class="fa fa-list" aria-hidden="true"></i>   Daire Listesi</a>
+                      </li>
+
+                    </ul>
+                  <!--BLOK MENÜSÜ -->
+                            <!--BLOK MENÜSÜ -->
+                            <li  data-toggle="collapse" data-target="#sayaclar" class="collapsed ">
+                              <a ><i class="fa fa-bed" aria-hidden="true"></i> Sayaçlar <span class="arrow"></span></a>
+                            </li>
+                            <ul class="sub-menu collapse" id="sayaclar">
+                                <li routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact:true}">
+                                    <a [routerLink]="['yonetici','sayac','ekle']">
+                                  <i class="fa fa-plus" aria-hidden="true"></i>   Sayaç Ekle</a>
+                                </li>
+                                <li routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact:true}">
+                                    <a [routerLink]="['yonetici','sayac','liste']">
+                                  <i class="fa fa-list" aria-hidden="true"></i>   Sayaç Listesi</a>
+                                </li>
+          
+                              </ul>
+                            <!--BLOK MENÜSÜ -->
+
+
+
+
+
+                <li data-toggle="collapse" data-target="#modem" class="collapsed">
+                  <a ><i class="fa fa-wifi" aria-hidden="true" ></i> Modemler <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="modem">
+                    <li routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}">
+                    <a [routerLink]="['yonetici','modem','ekle']">
+                  <i class="fa fa-plus" aria-hidden="true"></i>   Modem Ekle</a>
+                </li>
+                <li routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}">
+                    <a [routerLink]="['yonetici','modem','liste']">
+                  <i class="fa fa-list" aria-hidden="true"></i>   Modem Listesi</a>
+                </li>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#dönemler" class="collapsed">
+                  <a ><i class="fa fa-wifi" aria-hidden="true" ></i> Dönemler <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="donemler">
+                    <li routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}">
+                    <a [routerLink]="['yonetici','modem','ekle']">
+                  <i class="fa fa-plus" aria-hidden="true"></i>   Dönem Ekle</a>
+                </li>
+                <li routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}">
+                    <a [routerLink]="['yonetici','modem','liste']">
+                  <i class="fa fa-list" aria-hidden="true"></i>   Dönem Listesi</a>
+                </li>
+                </ul>
+
+
+
+
+
+                <li data-toggle="collapse" data-target="#new" class="collapsed">
+                  <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="new">
+                  <li>New New 1</li>
+                  <li>New New 2</li>
+                  <li>New New 3</li>
+                </ul>
+
+
+                 <li>
+                  <a href="#">
+                  <i class="fa fa-user fa-lg"></i> Profile
+                  </a>
+                  </li>
+
+                 <li>
+                  <a href="#">
+                  <i class="fa fa-users fa-lg"></i> Users
+                  </a>
+                </li>
+            </ul>
+     </div>
+</div>

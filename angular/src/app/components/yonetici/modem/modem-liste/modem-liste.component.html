@@ -1,0 +1,88 @@
+<select name="siteAdi"
+id="siteAdi"
+class="form-control"
+#siteAdi
+(change)="onSiteChange(siteAdi.value)"
+required
+>
+ <option value="">Site Seçiniz</option>
+ <option *ngFor="let s of siteler" [value]="s.item1">{{s.item2}}</option>
+</select>
+
+
+<div class="table-header">
+<mat-form-field>
+  <input matInput  placeholder="Filtre" #inputFilter>
+</mat-form-field>
+</div>
+<button mat-button color="warn" [routerLink]="['/yonetici','modem','ekle']" >Modem Ekle</button>
+
+<div class="table-container mat-elevation-z8">
+
+<mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="site">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Site </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{selectedSite}}
+    </mat-cell>
+      </ng-container>
+  <!-- ID Column -->
+  <ng-container matColumnDef="kazan">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Kazan Dairesi		</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      {{row.kazan.adi}}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="imeiNo">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>İmei No</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      {{row.imeiNo}}
+
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="telNo">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Tel No</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      {{row.tel}}
+
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Durum">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Durum</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+    <div class="aktif"  *ngIf ="row.durum === true; else durumYok">
+      Aktif
+    </div>
+
+    </mat-cell>
+  </ng-container>
+ 
+
+
+
+  <ng-container matColumnDef="islemler">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> İşlemler </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <a [routerLink]="['/yonetici','modem','duzenle',row.id]" mat-raised-button color="primary"> Düzenle</a>
+    </mat-cell>
+  </ng-container>
+
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;">
+  </mat-row>
+</mat-table>
+
+<mat-paginator
+[length]="toplamElemanSayisi"
+[pageSize]="10"
+[pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+<ng-template #durumYok>
+<div id="sayacYok">Pasif</div>
+
+</ng-template>
+
+

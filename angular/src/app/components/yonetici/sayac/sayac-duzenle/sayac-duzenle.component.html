@@ -1,0 +1,176 @@
+<div class="form">
+  <form #sayacDuzenleForm="ngForm" (ngSubmit)="onSubmit(sayacDuzenleForm)">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="" for="daireAdi">Daire</label>
+          <select name="daireAdi"
+           id="daireAdi"
+           class="form-control"
+           [(ngModel)]="sayac.daireNo"
+           #daireAdi="ngModel"
+           required
+           >
+            <option value="">Daire Seçiniz</option>
+            <option *ngFor="let d of daireler" [value]="d">{{d}}</option>
+          </select>
+  
+      </div>
+      <div class="form-group col-md-6">
+        <label for="kTarih">Kurulum Tarihi</label>
+        <input type="date" 
+        name="kTarih" 
+        id="kTarih"
+        class="form-control"
+        [ngModel]="sayac.kurulumTarihi | date:'yyyy-MM-dd'"
+        (ngModelChange)="sayac.kurulumTarihi = $event"
+        #kTarihi="ngModel"
+        required
+        >
+        <div [hidden]="kTarihi.valid || kTarihi.pristine" class="alert alert-danger">Kurulum Tarihi Gereklidir</div>
+
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="" for="sayacTipi">Sayaç Tipi</label>
+          <select name="sayacTipi"
+           id="sayacTipi"
+           class="form-control"
+           [(ngModel)]="sayac.tipi"
+           #sayacTipi="ngModel"
+           required
+           >
+            <option *ngFor="let tip of tipler" [value]="tip">{{tip}}</option>
+          </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="sID1">Sayaç ID1</label>
+        <input type="text"
+         name="sID1"
+          id="sID1"
+          class="form-control"
+          [(ngModel)]="sayac.sayacID1"
+          > 
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="sID2">Sayaç ID2</label>
+        <input 
+        type="text" 
+        name="sID2" 
+        id="sID2"
+        class="form-control"
+        [(ngModel)]="sayac.sayacID2"
+        >
+      </div>
+      <div class="form-group col-md-6">
+        <label class="" for="daireAdi">Birim</label>
+          <select name="birim"
+           id="birim"
+           class="form-control"
+           [(ngModel)]="sayac.birim"
+           #daireAdi="ngModel"
+           required
+           >
+            <option value="">Birim Seçiniz</option>
+            <option *ngFor="let b of sayac.birimler" [value]="b.birim">{{b.birim + '--' + b.tip}}</option>
+          </select>
+  
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="bIndex">Başlangıc İndeks</label>
+        <input type="number" 
+        name="bIndex" 
+        id="bIndex"
+        class="form-control"
+        [(ngModel)]="sayac.baslangicIndex"
+        #bIndex="ngModel"
+        required
+        >
+        <div [hidden]="bIndex.valid || bIndex.pristine" class="alert alert-danger">Başlangıc İndeksi Gereklidir</div>
+
+      </div>
+      <div class="form-group col-md-6">
+        <label for="sMarka">Sayaç Marka</label>
+        <input type="text" 
+        name="sMarka" 
+        id="sMarka"
+        class="form-control"
+        [(ngModel)]="sayac.marka"
+        >
+
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="" for="modem">Modem</label>
+          <select name="modem"
+           id="modem"
+           class="form-control"
+           [(ngModel)]="sayac.modemId"
+           #daireAdi="ngModel"
+           required
+           
+           >
+            <option value="">Modem Seçiniz</option>
+            <option *ngFor="let modem of modemler" [value]="modem.imeiNo">{{modem.imeiNo}}</option>
+          </select>
+  
+      </div>
+      <div class="form-group col-md-6">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="bKalorimetre" [(ngModel)]="sayac.boylerKalorimetre" id="inlineCheckbox1" >
+          <label class="form-check-label" for="inlineCheckbox1">Boyler Kalorimetresi Var mı</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="okuma2ID" [(ngModel)]="sayac.okumaikinciId" id="inlineCheckbox2" >
+          <label class="form-check-label" for="inlineCheckbox2">Okuma 2.Idden mi yapılacak</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="okunacakmi" [(ngModel)]="sayac.okunacakMi"  id="inlineCheckbox3"  >
+          <label class="form-check-label" for="inlineCheckbox3">Bu sayaç okunmayacak</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" 
+          [(ngModel)]="sayac.faturalandirma" 
+           id="inlineCheckbox4" 
+           name="faturlandirma"
+           >
+          <label class="form-check-label" for="inlineCheckbox4">Bu sayaç faturalandırılmayacak</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="aciklama">Açıklama</label>
+        <input type="text" 
+        name="aciklama" 
+        id="aciklama"
+        class="form-control"
+        [(ngModel)]="sayac.aciklama"
+        >
+
+      </div>
+    </div>
+
+
+
+
+          <button id="btnKabul" type="submit"
+          class="btn btn-primary pull-left"
+          data-toggle="modal"
+          data-target="#exampleModal"
+           [disabled]="!sayacDuzenleForm.valid"
+           >Kaydet</button>
+
+
+      </form>
+
+
+
+      <button class="btn btn-danger  pull-left" [routerLink]="['/yonetici', 'sayac', 'liste']">İptal</button>
+    </div>

@@ -1,0 +1,186 @@
+<p>
+  {{blok|json }}
+</p>
+<div class="form">
+  <form #blokEkleForm="ngForm" (ngSubmit)="onSubmit(blokEkleForm)">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="siteAdi">Site</label>
+      <div class="col-sm-5">
+        <select name="siteAdi"
+         id="siteAdi"
+         class="form-control"
+         [(ngModel)]="blok.siteId"
+         #siteAdi = "ngModel"
+         required
+         (change)="onSiteChange(siteAdi.value)"
+        >
+         <option value="">Seçiniz</option>
+         <option *ngFor="let s of siteler" [value]="s.item1">{{s.item2}}</option>
+        </select>
+        <div [hidden]="siteAdi.valid || siteAdi.pristine"  class="alert alert-danger">Site Adı gereklidir</div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+          <label for="adi" class="col-sm-3 col-form-label">Blok Adı</label>
+          <div class="col-sm-5">
+             <input type="text"
+             class="form-control"
+             id="adi"
+             name="adi"
+             placeholder="Blok Adı"
+             [(ngModel)]="blok.adi"
+             required
+             #adi="ngModel">
+             <div [hidden]="adi.valid || adi.pristine"  class="alert alert-danger">Blok  Adı gereklidir</div>
+
+            </div>
+        </div>
+        <div class="form-group row">
+          <label for="bNo" class="col-sm-3 col-form-label">Blok No</label>
+          <div class="col-sm-5">
+            <input type="text"
+            name="bNo"
+            id="bNo"
+            class="form-control"
+            placeholder="Blok No"
+            [(ngModel)]="blok.no"
+            required
+            #noInput="ngModel"
+            >
+            <div [hidden]="noInput.valid || noInput.pristine"  class="alert alert-danger">Blok  No gereklidir</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label" for="daireSayisi">Daire Sayısı</label>
+          <div class="col-sm-5">
+              <input type="number" class="form-control"
+              id="daireSayisi"
+              name="daireSayisi"
+              placeholder="Daire Sayısı"
+              [(ngModel)]="blok.daireSayisi"
+              required
+              OnlyNumber="true"
+              #dSayisi="ngModel"
+              >
+
+              <div [hidden]="dSayisi.valid || dSayisi.pristine"  class="alert alert-danger">Daire Sayısı gereklidir</div>
+
+
+          </div>
+
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="kAlan">Kapalı Alan m2</label>
+            <div class="col-sm-5">
+                <input type="number" class="form-control"
+                id="kAlan"
+                name="kAlan"
+                placeholder="Kapalı Alan "
+                [(ngModel)]="blok.kapaliAlanMetrekare"
+                required
+                OnlyNumber="true"
+                #kAlan="ngModel">
+                <div [hidden]="kAlan.valid || kAlan.pristine"  class="alert alert-danger">Kapalı Alan gereklidir</div>
+
+
+            </div>
+
+          </div>
+
+
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label" for="kazanAdi">Kazan</label>
+          <div class="col-sm-5">
+            <select name="kazanAdi"
+             id="kazanAdi"
+             class="form-control"
+             [(ngModel)]="blok.kazanId"
+             #kazanAdi ="ngModel"
+             required
+
+             >
+             <option value="">Seçiniz</option>
+              <option *ngFor="let k of kazanlar" [value]="k.id">{{k.adi}}</option>
+            </select>
+            <div [hidden]="kazanAdi.valid || kazanAdi.pristine"  class="alert alert-danger">Kazan Adı gereklidir</div>
+
+          </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="yAd">Yönetici Adı Soyadı</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control"
+                id="yAd"
+                name="yAd"
+                placeholder="Ad Soyad"
+                [(ngModel)]="blok.yonetici.adi">
+
+
+            </div>
+
+          </div>
+
+          <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="yTel">Yönetici Tel</label>
+              <div class="col-sm-5">
+                <input type="number"
+                name="phoneNumber"
+                 placeholder="Telefon No"
+                 class="form-control"
+                 pattern="[0-9.-]*" maxlength="10"
+                 [(ngModel)]="blok.yonetici.tel"
+                  #phoneNumber="ngModel"/>
+
+
+
+              </div>
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="yKullaniciAdi">Yönetici Kullanıcı Adı</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control"
+                    id="yKullaniciAdi"
+                    name="yKullaniciAdi"
+                    placeholder="Kullanıcı Adı"
+                    [(ngModel)]="blok.yonetici.kullanici.adi">
+
+
+                </div>
+
+              </div>
+              <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" for="ySifre">Şifre</label>
+                  <div class="col-sm-5">
+                      <input type="password" class="form-control"
+                      id="ySifre"
+                      name="ySifre"
+                      placeholder="Şifre"
+                      [(ngModel)]="blok.yonetici.kullanici.sifre">
+
+
+                  </div>
+
+                </div>
+
+
+
+
+
+          <button id="btnKabul" type="submit"
+          class="btn btn-primary pull-left"
+          data-toggle="modal"
+          data-target="#exampleModal"
+           [disabled]="!blokEkleForm.valid"
+           >Kaydet</button>
+
+
+      </form>
+
+
+
+      <button class="btn btn-danger  pull-left" [routerLink]="['/yonetici', 'blok', 'liste']">İptal</button>
+    </div>

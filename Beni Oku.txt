@@ -1,0 +1,9 @@
+Projede angular 5 ve .net core 2 mongodb kullanılmıştır derlemek için öncelikle .net core(webapi klasöründe) sonra angular 5(angular klasöründe) derlenmelidir ayrı çalıştırılmalıdır ve 
+
+Angular derlenmeden önce npm install diyip paketler indirilmelidir
+
+
+
+
+chrome’da çalışırken localhost’ten localhost’e sorgu atmayı engellediği için ekleme çıkarma vs gibi işlemler test ortamında çalışmamaktadır bunun için  google chrome mağazısından cors eklentisi kurulmalıdır ve eklenti çalıştırılmalıdır eklenti aşağıdaki linktedir
+https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi

@@ -1,0 +1,117 @@
+
+<div class="form">
+
+  <form #kazanDuzenleForm="ngForm" (ngSubmit)="onSubmit(kazanDuzenleForm)">
+      <div class="form-group row">
+          <label for="adi" class="col-sm-3 col-form-label">Kazan Adı</label>
+          <div class="col-sm-5">
+
+             <input type="text"
+             class="form-control"
+             id="adi"
+             name="adi"
+             placeholder="Kazan Adı"
+             [(ngModel)]="kazan.adi"
+             required
+             #adi="ngModel">
+             <div [hidden]="adi.valid || adi.pristine"  class="alert alert-danger">Kazan Adı gereklidir</div>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3">Daire Girişlerinde Sıcak Su İçin Isı İstasyonu Var mı ?</div>
+            <div class="col-sm-5">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                id="isiIstasyonu"
+                name="isiIstasyonu"
+                [checked]="kazan.isiIstasyonuVarMi"
+                (change) = "kazan.isiIstasyonuVarMi = !kazan.isiIstasyonuVarMi"
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-sm-3">Kazan Dairesine Ait Ortak Sıcak Su (Boyler) Kalorimetresi Var mı ?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="ortakSicakSu"
+                  name="ortakSicakSu"
+                  [checked]="kazan.ortakSicakSuKaloriMetreVarMi"
+                  (change) = "kazan.ortakSicakSuKaloriMetreVarMi = !kazan.ortakSicakSuKaloriMetreVarMi"
+                  >
+                </div>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-sm-3">Dairelerde Kalorimetre Bağlı mı?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="kaloriMetre"
+                  name="kaloriMetre"
+                  [checked]="kazan.daireKalorimetre"
+                  (change) = "kazan.daireKalorimetre = !kazan.daireKalorimetre"
+                  >
+                </div>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-sm-3">Dairelerde Sıcak Su Sayacı Bağlı mı ?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="sicakSu"
+                  name="sicakSu"
+                  [checked]= "kazan.daireSicakSuSayac"
+                  (change) = "kazan.daireSicakSuSayac = !kazan.daireSicakSuSayac"
+                  >
+                </div>
+              </div>
+          </div>
+          <div class="form-group row">
+              <div class="col-sm-3">Dairelerde Soğuk Su Sayacı Bağlı mı ?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="sogukSu"
+                  name="sogukSu"
+                  [checked]= "kazan.daireSogukSuSayac"
+                  (change) = "kazan.daireSogukSuSayac = !kazan.daireSogukSuSayac"
+                  >
+                </div>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-sm-3">Dairelerde Pay Ölçer Var mı ?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="payOlcer"
+                  name="payOlcer"
+                  [checked]= "kazan.dairePayOlcer"
+                  (change) = "kazan.dairePayOlcer = !kazan.dairePayOlcer"
+                  >
+                </div>
+              </div>
+          </div>
+
+
+
+          <button id="btnKabul" type="submit"
+          class="btn btn-primary pull-left"
+           [disabled]="!kazanDuzenleForm.valid"
+           >Kaydet</button>
+
+
+      </form>
+
+
+
+      <button class="btn btn-danger  pull-left" [routerLink]="['/yonetici', 'kazan', 'liste']">İptal</button>
+    </div>

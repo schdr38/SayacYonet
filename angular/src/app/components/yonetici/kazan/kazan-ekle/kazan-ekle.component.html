@@ -1,0 +1,146 @@
+
+<div class="form">
+
+  <form #kazanEkleForm="ngForm" (ngSubmit)="onSubmit(kazanEkleForm)">
+      <div class="form-group row">
+          <label for="adi" class="col-sm-3 col-form-label">Kazan Adı</label>
+          <div class="col-sm-5">
+
+             <input type="text"
+             class="form-control"
+             id="adi"
+             name="adi"
+             placeholder="Kazan Adı"
+             [(ngModel)]="kazan.adi"
+             required
+             #adi="ngModel">
+             <div [hidden]="adi.valid || adi.pristine"  class="alert alert-danger">Kazan Adı gereklidir</div>
+
+            </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label" for="siteAdi">Site</label>
+          <div class="col-sm-5">
+            <select name="siteAdi"
+             id="siteAdi"
+             class="form-control"
+             [(ngModel)]="kazan.siteId"
+             #siteAdi ="ngModel"
+             required
+             >
+              <option *ngFor="let s of siteler" [value]="s.item1">{{s.item2}}</option>
+            </select>
+            <div [hidden]="siteAdi.valid || siteAdi.pristine"  class="alert alert-danger">Site Adı gereklidir</div>
+
+          </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3">Daire Girişlerinde Sıcak Su İçin Isı İstasyonu Var mı ?</div>
+            <div class="col-sm-5">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                id="isiIstasyonu"
+                name="isiIstasyonu"
+                [(ngModel)]="kazan.isiIstasyonuVarMi"
+                #isiIstasyon = "ngModel"
+                value="false"
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-sm-3">Kazan Dairesine Ait Ortak Sıcak Su (Boyler) Kalorimetresi Var mı ?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="isiIstasyonu"
+                  name="isiIstasyonu"
+                  [(ngModel)]="kazan.ortakSicakSuKaloriMetreVarMi"
+                  #ortakSicakSu = "ngModel"
+                  value="false"
+
+                  >
+                </div>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-sm-3">Dairelerde Kalorimetre Bağlı mı?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="isiIstasyonu"
+                  name="isiIstasyonu"
+                  [(ngModel)]="kazan.daireKalorimetre"
+                  #daireKalorimetre = "ngModel"
+                  value="false"
+
+                                    >
+                </div>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-sm-3">Dairelerde Sıcak Su Sayacı Bağlı mı ?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="isiIstasyonu"
+                  name="isiIstasyonu"
+                  [(ngModel)]="kazan.daireSicakSuSayac"
+                  #sicakSu = "ngModel"
+                  value="false"
+
+                  >
+                </div>
+              </div>
+          </div>
+          <div class="form-group row">
+              <div class="col-sm-3">Dairelerde Soğuk Su Sayacı Bağlı mı ?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="isiIstasyonu"
+                  name="isiIstasyonu"
+                  [(ngModel)]="kazan.daireSogukSuSayac"
+                  #sogukSu = "ngModel"
+                  value="false"
+
+                  >
+                </div>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-sm-3">Dairelerde Pay Ölçer Var mı ?</div>
+              <div class="col-sm-5">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"
+                  id="isiIstasyonu"
+                  name="isiIstasyonu"
+                  [(ngModel)]="kazan.dairePayOlcer"
+                  #payOlcer = "ngModel"
+                  value="false"
+
+                  >
+                </div>
+              </div>
+          </div>
+
+
+
+          <button id="btnKabul" type="submit"
+          class="btn btn-primary pull-left"
+          data-toggle="modal"
+          data-target="#exampleModal"
+           [disabled]="!kazanEkleForm.valid"
+           >Kaydet</button>
+
+
+      </form>
+
+
+
+      <button class="btn btn-danger  pull-left" [routerLink]="['/yonetici', 'kazan', 'liste']">İptal</button>
+    </div>

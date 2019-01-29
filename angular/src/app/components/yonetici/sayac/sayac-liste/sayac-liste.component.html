@@ -1,0 +1,148 @@
+
+
+
+<div class="table-header">
+
+  <select name="siteAdi"
+  id="siteAdi"
+  matInput
+  #sitelerInput
+  class="form-control"
+  (change)="onSiteChange($event.target.value)"
+ >
+  <option value="">Site Seçiniz</option>
+  <option *ngFor="let s of siteler" [value]="s.item1">{{s.item2}}</option>
+ </select>
+
+ <select name="blokAdi"
+ id="blokAdi"
+ matInput
+ (change)="onBlokChange($event.target.value)"
+ #bloklarInput
+ class="form-control"
+>
+ <option value="">Blok Seçiniz</option>
+ <option *ngFor="let b of bloklar" [value]="b.item1">{{b.item2}}</option>
+</select>
+
+
+
+</div>
+<button mat-button color="warn" [routerLink]="['/yonetici','sayac','ekle']" >Sayaç Ekle</button>
+
+<div class="table-container mat-elevation-z8">
+
+<mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="daireNo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Daire No </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.daireNo}}
+
+    </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="sayacTip">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Daire No </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.tipi}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="id1">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID1 </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.sayacID1}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="id2">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID2 </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.sayacID2}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="birim">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Birim </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.birimi}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sayacTuru">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sayaç Türü </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.birim}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="bIndex">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Başlangıc İndeksi </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.baslangicIndex}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="boylerKalorimetre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Boyler Kalorimetre </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.boylerKalorimetre}}
+        </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="okuma">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Okuma 2 Idden</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.okumaikinciId}}
+        </mat-cell>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="okunmaDurum">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Okunma Durumu </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.okunacakMi}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fatura">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fatura </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.faturalandirma}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="modem">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Modem </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.modemId}}
+        </mat-cell>
+      </ng-container>
+      
+  
+
+
+  <ng-container matColumnDef="islemler">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> İşlemler </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <a [routerLink]="['/yonetici','sayac','duzenle',row.id]" mat-raised-button color="primary"> Düzenle</a>
+    </mat-cell>
+  </ng-container>
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"
+  >
+
+  </mat-row>
+</mat-table>
+
+<mat-paginator
+[length]="tplmElmnSayisi?.toString()"
+[pageSize]="5"
+[pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

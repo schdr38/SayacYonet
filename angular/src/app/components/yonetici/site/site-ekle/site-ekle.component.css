@@ -1,0 +1,47 @@
+.form{
+  padding-left:2em;
+  padding-right:2em;
+  padding-top:2px;
+  border: 2px solid rgb(226, 226, 226);
+  border-radius: 12px;}
+.form-control{
+  border-radius:5px;
+}
+
+.btn{
+  margin-left: 3px;
+}
+
+.myModal{
+  position:fixed;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  display:table;
+}
+.myModal > .model-content{
+  display:table-cell;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}

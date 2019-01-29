@@ -1,0 +1,131 @@
+
+<div class="form">
+  <form #daireEkleForm="ngForm" (ngSubmit)="onSubmit(daireEkleForm)">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="siteAdi">Site</label>
+      <div class="col-sm-5">
+        <select name="siteAdi"
+         id="siteAdi"
+         class="form-control"
+         [(ngModel)]="selectedSId"
+         #siteAdi="ngModel"
+         (change)="onSiteChange(siteAdi.value)"
+         required
+         >
+          <option value="">Seçiniz</option>
+          <option *ngFor="let s of siteler" [value]="s.item1">{{s.item2}}</option>
+        </select>
+        <div [hidden]="siteAdi.valid || siteAdi.pristine"  class="alert alert-danger">Site Adı gereklidir</div>
+
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="blokAdi">Blok</label>
+      <div class="col-sm-5">
+        <select name="blokAdi"
+         id="blokAdi"
+         class="form-control"
+         [(ngModel)]="daire.blokId"
+         #blokAdi="ngModel"
+         required
+        >
+         <option value="">Seçiniz</option>
+         <option *ngFor="let b of bloklar" [value]="b.id">{{b.adi}}</option>
+        </select>
+        <div [hidden]="blokAdi.valid || blokAdi.pristine"  class="alert alert-danger">Blok Adı gereklidir</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="daireNo" class="col-sm-3 col-form-label">Daire No</label>
+      <div class="col-sm-2">
+        <input type="number"
+        name="no"
+        id="no"
+        class="form-control"
+        [(ngModel)]="daire.kapiNo"
+        #daireNo="ngModel"
+        required
+        >
+        <div [hidden]="daireNo.valid || daireNo.pristine" class="alert alert-danger">Daire No Gereklidir</div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="adSoyad" class="col-sm-3 col-form-label">Ad Soyad</label>
+      <div class="col-sm-5">
+        <input type="text"
+        name="adSoyad"
+        id="adSoyad"
+        class="form-control"
+        [(ngModel)]="daire.adSoyad"
+        #adSoyad="ngModel"
+        required
+        >
+        <div [hidden]="adSoyad.valid || adSoyad.pristine" class="alert alert-danger">Ad Soyad Gereklidir</div>
+      </div>
+
+    </div>
+
+    <div class="form-group row">
+      <label for="kapaliAlan" class="col-sm-3 col-form-label">Kapalı Alan m2</label>
+      <div class="col-sm-2">
+        <input type="number"
+        name="kapaliAlan"
+        id="kapaliAlan"
+        class="form-control"
+        [(ngModel)]="daire.kapaliAlan"
+        #kapaliAlan="ngModel"
+        required
+        >
+        <div [hidden]="kapaliAlan.valid || kapaliAlan.pristine" class="alert alert-danger">Kapalı Alan m2 Gereklidir</div>
+      </div>
+
+    </div>
+
+    <div class="form-group row">
+      <label for="kiraciMi" class="col-sm-3 col-form-label">Kiracı mı ?</label>
+      <div class="col-sm-5">
+        <input type="checkbox"
+        name="kiraciMi"
+        id="kiraciMi"
+        class="form-control"
+        [(ngModel)]="daire.kiraciMi"
+        #kiraciMi="ngModel"
+        >
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label for="not" class="col-sm-3 col-form-label">Not</label>
+      <div class="col-sm-5">
+        <input type="text"
+        name="not"
+        id="not"
+        class="form-control"
+        [(ngModel)]="daire.not"
+        >
+      </div>
+
+    </div>
+
+
+
+
+
+
+          <button id="btnKabul" type="submit"
+          class="btn btn-primary pull-left"
+          data-toggle="modal"
+          data-target="#exampleModal"
+           [disabled]="!daireEkleForm.valid"
+           >Kaydet</button>
+
+
+      </form>
+
+
+
+      <button class="btn btn-danger  pull-left" [routerLink]="['/yonetici', 'daire', 'liste']">İptal</button>
+    </div>

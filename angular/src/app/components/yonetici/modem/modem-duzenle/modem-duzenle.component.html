@@ -1,0 +1,93 @@
+<div class="form">
+  <form #modemDuzenleForm="ngForm" (ngSubmit)="onSubmit(modemDuzenleForm)">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="siteAdi">Site</label>
+      <div class="col-sm-5">
+        <input name="siteAdi"
+         id="siteAdi"
+         class="form-control"
+         [(ngModel)]="modem?.site.adi"
+         readOnly
+         >
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="kazanAdi">Kazan</label>
+      <div class="col-sm-5">
+        <input name="kazanAdi"
+         id="kazanAdi"
+         class="form-control"
+         [(ngModel)]="modem?.kazan.adi"
+         readOnly
+        >
+    </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="imeiNo" class="col-sm-3 col-form-label">Imei No</label>
+      <div class="col-sm-5">
+        <input type="text"
+        name="no"
+        id="no"
+        class="form-control"
+        [(ngModel)]="modem.imeiNo"
+        #imeiNo="ngModel"
+        placeholder="Imei No"
+        required
+        >
+        <div [hidden]="imeiNo.valid || imeiNo.pristine" class="alert alert-danger">Imei No Gereklidir</div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="telNo" class="col-sm-3 col-form-label">Tel</label>
+      <div class="col-sm-5">
+        <input type="text"
+        name="telNo"
+        id="telNo"
+        class="form-control"
+        [(ngModel)]="modem.tel"
+        #telNo="ngModel"
+        [OnlyNumber]="true"
+        placeholder="Telefon Numarası"
+        required
+        >
+        <div [hidden]="telNo.valid || telNo.pristine" class="alert alert-danger">Tel No Gereklidir</div>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="durum">Durum</label>
+      <div class="col-sm-5">
+        <select name="durum"
+         id="durum"
+         class="form-control"
+         [(ngModel)]="modem.durum"
+         #durum="ngModel"
+         required
+        >
+         <option value="">Durumunu Seçiniz</option>
+         <option  [value]="true">Aktif</option>
+         <option [value]="false">Pasif</option>
+        </select>
+        <div [hidden]="durum.valid || durum.pristine"  class="alert alert-danger">Durum gereklidir</div>
+      </div>
+    </div>
+          <button id="btnKabul" type="submit"
+          class="btn btn-primary pull-left"
+          data-toggle="modal"
+          data-target="#exampleModal"
+           [disabled]="!modemDuzenleForm.valid"
+           #btnSubmit
+           >Kaydet</button>
+
+
+      </form>
+
+
+
+      <button class="btn btn-danger  pull-left" [routerLink]="['/yonetici', 'modem', 'liste']">İptal</button>
+    </div>

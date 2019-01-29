@@ -1,0 +1,79 @@
+<div class="form" >
+
+<form ngSubmit="onSubmit()">
+  <div class="form-group">
+    <label for="adi">Site Adı</label>
+
+    <input type="text" id="adi" placeholder="Site Adını giriniz"  class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="adres">Adres</label>
+    <textarea name="adres" id="adres" cols="30" rows="10"  class="form-control form-control"></textarea>
+  </div>
+  <div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            <label for="il">İl</label>
+
+            <input type="text" id="il" placeholder="İl"  class="form-control">
+          </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label for="ilce">İlçe</label>
+
+            <input type="text" id="ilce" placeholder="İlçe giriniz"  class="form-control">
+          </div>
+    </div>
+  </div>
+        <div class="form-group">
+            <label for="siteTelNo">Site Tel No</label>
+
+            <input type="tel" id="siteTelNo" placeholder="Telefon No giriniz"  class="form-control">
+          </div>
+
+      <div class="row">
+        <div class="form-group col-6">
+            <label for="yAdi">Yönetici</label>
+            <input type="text" id="yAdi" placeholder="Yönetici Adı Soyadı"  class="form-control">
+
+        </div>
+        <div class="form-group col-6">
+            <label for="yTelNo">Yönetici Tel No</label>
+            <input type="tel" id="yTelNo" placeholder="Tel No"  class="form-control">
+        </div>
+      </div>
+      <div class="row">
+          <div class="form-group col-6">
+              <label for="yKullaniciAdi">Yönetici Kullanıcı Adı</label>
+              <input type="text" id="yKullaniciAdi" placeholder="Adı Soyadı"  class="form-control">
+
+          </div>
+          <div class="form-group col-6">
+              <label for="ySifre">Yönetici Şifre</label>
+              <input type="password" id="ySifre" placeholder="Şifre"  class="form-control">
+          </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-6">
+                <label for="yManipulasyonKatsayisi">Manipulasyon Katsayısı</label>
+                <input type="text" id="yManipulasyonKatsayisi" placeholder="Manipulasyon Kat Sayısı"  class="form-control">
+
+            </div>
+            <div class="form-group col-6">
+                <label for="durum">Durum</label>
+                <select class="form-control" id="durum">
+                    <option>Aktif</option>
+                    <option>Pasif</option>
+                  </select>
+            </div>
+          </div>
+          <button class="btn btn-primary pull-right">Kaydet</button>
+
+</form>
+
+
+
+<button class="btn btn-danger  pull-right">İptal</button>
+</div>

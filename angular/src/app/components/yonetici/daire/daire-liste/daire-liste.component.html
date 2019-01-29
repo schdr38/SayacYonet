@@ -1,0 +1,101 @@
+
+
+
+<div class="table-header">
+
+  <select name="siteAdi"
+  id="siteAdi"
+  matInput
+  #sitelerInput
+  class="form-control"
+  (change)="onSiteChange($event.target.value)"
+ >
+  <option value="">Site Seçiniz</option>
+  <option *ngFor="let s of siteler" [value]="s.item1">{{s.item2}}</option>
+ </select>
+
+ <select name="blokAdi"
+ id="blokAdi"
+ matInput
+ #bloklarInput
+ class="form-control"
+>
+ <option value="">Blok Seçiniz</option>
+ <option *ngFor="let b of bloklar" [value]="b.item1">{{b.item2}}</option>
+</select>
+
+
+
+</div>
+<button mat-button color="warn" [routerLink]="['/yonetici','daire','ekle']" >Daire Ekle</button>
+
+<div class="table-container mat-elevation-z8">
+
+<mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="kapiNo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Daire No </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+     {{row.kapiNo}}
+
+    </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="adSoyad">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Ad</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+       {{row.adSoyad}}
+      </mat-cell>
+  </ng-container>
+
+  <!-- Progress Column -->
+  <ng-container matColumnDef="blok">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Blok</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+            {{selectedBlok.adi}}
+         </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+
+  <ng-container matColumnDef="site">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Site</mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{selectedSite.adi}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="kapaliAlan">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Kapalı Alan m2</mat-header-cell>
+    <mat-cell *matCellDef="let row">  </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="kiraciMi">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Kiracı mı</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div *ngIf="row.kiraciMi === true else kiraciDegil">Evet</div>
+      <ng-template #kiraciDegil>Hayır</ng-template>
+    </mat-cell>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="islemler">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> İşlemler </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <a [routerLink]="['/yonetici','daire','duzenle',row.id]" mat-raised-button color="primary"> Düzenle</a>
+    </mat-cell>
+  </ng-container>
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"
+  >
+
+  </mat-row>
+</mat-table>
+
+<mat-paginator
+[length]="tplmElmnSayisi?.toString()"
+[pageSize]="5"
+[pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

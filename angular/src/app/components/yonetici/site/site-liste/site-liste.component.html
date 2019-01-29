@@ -1,0 +1,69 @@
+
+
+
+<div class="table-header">
+  <mat-form-field>
+    <input matInput placeholder="Filtre" #input>
+  </mat-form-field>
+</div>
+<button mat-button color="warn" [routerLink]="['/yonetici','site','ekle']" >Site Ekle</button>
+
+<div class="table-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="adi">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Adı </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+       {{row.adi}}
+
+      </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="il">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Şehir</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+         {{row.adres.sehir}}
+        </mat-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="ilce">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> İlçe</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+          <div *ngIf="row.adres !==null" >
+              {{row.adres.ilce}}
+          </div>
+           </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+
+    <ng-container matColumnDef="tel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tel </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.tel}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> İşlemler </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <a [routerLink]="['/yonetici','site','duzenle',row.id]" mat-raised-button color="primary"> Düzenle</a>
+        <a [routerLink]="['/yonetici','site','detaylar',row.id]" mat-raised-button color="warn">Detaylar</a>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"
+    >
+
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator
+  [length]="toplamELemanSayisi?.toString()"
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
